@@ -9,7 +9,7 @@ import globals from 'globals';
 export function eslintConfig(): tseslint.ConfigArray {
     return tseslint.config(
         {
-            files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
+            files: ['**/*.{js,mjs,cjs,ts,mts,cts,tsx}'],
             ignores: [
                 'out/**',
                 'playground/**',
@@ -31,6 +31,7 @@ export function eslintConfig(): tseslint.ConfigArray {
             '**/.vscode-test-web/**',
             'src/types/**/*.d.ts',
             'project-files/**/*',
+            '**/*.{js,mjs,cjs}',
         ]),
         js.configs.recommended,
         ...tseslint.configs.recommended,

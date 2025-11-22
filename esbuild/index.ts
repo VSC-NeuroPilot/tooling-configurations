@@ -1,7 +1,23 @@
 // @ts-check
 import { context } from 'esbuild';
-import { polyfillNode } from 'esbuild-plugin-polyfill-node';
+import { polyfillNode, PolyfillNodeOptions } from 'esbuild-plugin-polyfill-node';
 import { esbuildProblemMatcherPlugin } from './plugins';
+
+const minimumPolyfillPull: PolyfillNodeOptions = {
+    polyfills: { // trying to make the build as small as possible
+        child_process: false,
+        module: false,
+        os: false,
+        path: false,
+        punycode: false,
+        stream: false,
+        sys: false,
+        v8: false,
+        vm: false,
+        zlib: false,
+    },
+    globals: false,
+}
 
 export async function desktop(prodFlag: boolean, watchFlag: boolean) {
     const ctx = await context({
@@ -54,7 +70,7 @@ export async function desktopTest(_prodFlag: boolean, watchFlag: boolean) {
             esbuildProblemMatcherPlugin,
         ],
     });
-
+    
     if (watchFlag) {
         await ctx.watch();
     } else {
@@ -77,20 +93,7 @@ export async function web(prodFlag: boolean, watchFlag: boolean) {
         logLevel: 'warning',
         tsconfig: './tsconfig.web.json',
         plugins: [
-            polyfillNode({
-                polyfills: { // trying to make the build as small as possible
-                    child_process: false,
-                    module: false,
-                    os: false,
-                    path: false,
-                    punycode: false,
-                    stream: false,
-                    sys: false,
-                    v8: false,
-                    vm: false,
-                    zlib: false,
-                },
-            }),
+            polyfillNode(minimumPolyfillPull),
             /* add to the end of plugins array */
             esbuildProblemMatcherPlugin,
         ],
@@ -112,11 +115,8 @@ export async function webTest(_prodFlag: boolean, watchFlag: boolean) {
         sourcemap: true, // Always generate sourcemaps for tests
         sourcesContent: true, // Include source content for better debugging        
         platform: 'browser',
-        outfile: 'out/web/test/index.js',
+        outfile: 'out/web/test.js',
         tsconfig: './test-tsconfigs/tsconfig.web.json',
-        banner: {
-            js: 'if (typeof navigator === "undefined") { var navigator = { language: "en-US" }; } else if (!navigator.language) { navigator.language = "en-US"; }',
-        },
         external: [
             'vscode',
             'mocha',
@@ -129,24 +129,11 @@ export async function webTest(_prodFlag: boolean, watchFlag: boolean) {
         },
         // Include the same browser polyfills as the web bundle
         plugins: [
-            polyfillNode({
-                polyfills: {
-                    child_process: false,
-                    module: false,
-                    os: false,
-                    path: false,
-                    punycode: false,
-                    stream: false,
-                    sys: false,
-                    v8: false,
-                    vm: false,
-                    zlib: false,
-                },
-            }),
+            polyfillNode(minimumPolyfillPull),
             esbuildProblemMatcherPlugin,
         ],
     });
-
+    
     if (watchFlag) {
         await ctx.watch();
     } else {
@@ -171,28 +158,7 @@ export async function webview(prodFlag: boolean, watchFlag: boolean) {
         tsconfig: './tsconfig.webview.json',
         treeShaking: true,
         plugins: [
-            polyfillNode({
-                polyfills: { // trying to make the build as small as possible
-                    child_process: false,
-                    module: false,
-                    os: false,
-                    path: false,
-                    punycode: false,
-                    stream: false,
-                    sys: false,
-                    v8: false,
-                    vm: false,
-                    zlib: false,
-                },
-                globals: {
-                    __dirname: false,
-                    __filename: false,
-                    buffer: false,
-                    global: false,
-                    navigator: false,
-                    process: false,
-                },
-            }),
+            polyfillNode(minimumPolyfillPull),
             /* add to the end of plugins array */
             esbuildProblemMatcherPlugin,
         ],

@@ -9,10 +9,21 @@ export const esbuildProblemMatcherPlugin: Plugin = {
             console.log('[watch] build started');
         });
         build.onEnd(result => {
-            result.errors.forEach(({ text, location }) => {
+            result.warnings.forEach(({ text, location, notes }) => {
+                console.error(`!! [WARNING] ${text}`);
+                if (!location) return;
+                console.error(`    ${location.file}:${location.line}:${location.column}`);
+                notes.forEach(({ text, location }) => {
+                    console.error(`Note: ${text} (${location?.file}:${location?.line}:${location?.column})`)
+                })
+            })
+            result.errors.forEach(({ text, location, notes }) => {
                 console.error(`✘ [ERROR] ${text}`);
                 if (location == null) return;
-                console.error(`    ${location.file}:${location.line}:${location.column}:`);
+                console.error(`    ${location.file}:${location.line}:${location.column}`);
+                notes.forEach(({ text, location }) => {
+                    console.error(`Note: ${text} (${location?.file}:${location?.line}:${location?.column})`)
+                })
             });
             console.log('[watch] build finished');
         });
@@ -23,8 +34,7 @@ export const esbuildTypeScriptPlugin: Plugin = {
     name: 'esbuild-typescript-plugin',
 
     setup(build) {
-    /** @type {ts.WatchOfConfigFile<ts.SemanticDiagnosticsBuilderProgram> | null} */
-        let watchProgram = null;
+        let watchProgram: ts.WatchOfConfigFile<ts.SemanticDiagnosticsBuilderProgram> | null = null;
 
         // report diagnostics to stderr
         function reportDiagnostic(d: ts.Diagnostic) {
