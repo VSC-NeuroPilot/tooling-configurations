@@ -59,27 +59,27 @@ const config = [
         ],
         external: ['typescript']
     },
-    {
-        input: 'eslint/index.mts',
-        output: [
-            {
-                file: 'dist/eslint/index.mjs',
-                format: 'esm',
-                sourcemap: true,
-            }
-        ],
-        plugins: [
-            typescript({ 
-                tsconfig,
-                declaration: true,
-                declarationDir: './dist/eslint/types',
-                rootDir: './eslint'
-            }),
-            resolve(),
-            commonjs()
-        ],
-        external: ['eslint']
-    }
+    // {
+    //     input: 'eslint/index.mts',
+    //     output: [
+    //         {
+    //             file: 'dist/eslint/index.mjs',
+    //             format: 'esm',
+    //             sourcemap: true,
+    //         }
+    //     ],
+    //     plugins: [
+    //         typescript({ 
+    //             tsconfig,
+    //             declaration: true,
+    //             declarationDir: './dist/eslint/types',
+    //             rootDir: './eslint'
+    //         }),
+    //         resolve(),
+    //         commonjs()
+    //     ],
+    //     external: ['eslint']
+    // }
 ]
 
 export default config

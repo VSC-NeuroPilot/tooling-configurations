@@ -6,7 +6,7 @@ import stylistic from '@stylistic/eslint-plugin';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 
-export function eslintConfig(): tseslint.ConfigArray {
+export function eslintConfig() {
     return tseslint.config(
         {
             files: ['**/*.{js,mjs,cjs,ts,mts,cts,tsx}'],
