@@ -56,8 +56,7 @@ const config = [
             }),
             resolve(),
             commonjs()
-        ],
-        external: ['typescript']
+        ]
     },
     // {
     //     input: 'eslint/index.mts',

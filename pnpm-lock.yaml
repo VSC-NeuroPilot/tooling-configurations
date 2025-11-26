@@ -7,13 +7,29 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@eslint/js':
+        specifier: ^9.39.1
+        version: 9.39.1
+      '@stylistic/eslint-plugin':
+        specifier: ^5.5.0
+        version: 5.5.0(eslint@9.39.1)
+      '@types/node':
+        specifier: ^20.19.25
+        version: 20.19.25
+      eslint-plugin-unicorn:
+        specifier: ^62.0.0
+        version: 62.0.0(eslint@9.39.1)
+      globals:
+        specifier: ^16.5.0
+        version: 16.5.0
+      typescript-eslint:
+        specifier: ^8.47.0
+        version: 8.47.0(eslint@9.39.1)(typescript@5.9.2)
     devDependencies:
       '@changesets/cli':
         specifier: ^2.29.7
         version: 2.29.7(@types/node@20.19.25)
-      '@eslint/js':
-        specifier: ^9.39.1
-        version: 9.39.1
       '@rollup/plugin-commonjs':
         specifier: ^29.0.0
         version: 29.0.0(rollup@4.53.2)
@@ -23,12 +39,6 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^12.3.0
         version: 12.3.0(rollup@4.53.2)(tslib@2.8.1)(typescript@5.9.2)
-      '@stylistic/eslint-plugin':
-        specifier: ^5.5.0
-        version: 5.5.0(eslint@9.39.1)
-      '@types/node':
-        specifier: ^20.19.25
-        version: 20.19.25
       esbuild:
         specifier: ^0.27.0
         version: 0.27.0
@@ -38,12 +48,6 @@ importers:
       eslint:
         specifier: ^9.39.1
         version: 9.39.1
-      eslint-plugin-unicorn:
-        specifier: ^62.0.0
-        version: 62.0.0(eslint@9.39.1)
-      globals:
-        specifier: ^16.5.0
-        version: 16.5.0
       rollup:
         specifier: ^4.53.2
         version: 4.53.2
@@ -53,9 +57,6 @@ importers:
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
-      typescript-eslint:
-        specifier: ^8.47.0
-        version: 8.47.0(eslint@9.39.1)(typescript@5.9.2)
 
 packages:
 
