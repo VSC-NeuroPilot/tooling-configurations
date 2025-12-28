@@ -1,5 +1,4 @@
 import typescript from '@rollup/plugin-typescript'
-import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 
 const tsconfig = './tsconfig.json'
@@ -27,10 +26,8 @@ const config = [
                 declarationDir: './dist/esbuild/types',
                 rootDir: './esbuild'
             }),
-            resolve(),
             commonjs()
-        ],
-        external: ['esbuild']
+        ]
     },
     {
         input: 'esbuild/plugins.ts',
@@ -54,31 +51,33 @@ const config = [
                 declarationDir: './dist/esbuild/types',
                 rootDir: './esbuild'
             }),
-            resolve(),
             commonjs()
         ]
     },
-    // {
-    //     input: 'eslint/index.mts',
-    //     output: [
-    //         {
-    //             file: 'dist/eslint/index.mjs',
-    //             format: 'esm',
-    //             sourcemap: true,
-    //         }
-    //     ],
-    //     plugins: [
-    //         typescript({ 
-    //             tsconfig,
-    //             declaration: true,
-    //             declarationDir: './dist/eslint/types',
-    //             rootDir: './eslint'
-    //         }),
-    //         resolve(),
-    //         commonjs()
-    //     ],
-    //     external: ['eslint']
-    // }
+    {
+        input: 'eslint/index.mts',
+        output: [
+            {
+                file: 'dist/eslint/index.mjs',
+                format: 'esm',
+                sourcemap: true,
+            },
+            {
+                file: 'dist/eslint/index.cjs',
+                format: 'cjs',
+                sourcemap: true,
+            }
+        ],
+        plugins: [
+            typescript({ 
+                tsconfig,
+                declaration: true,
+                declarationDir: './dist/eslint/types',
+                rootDir: './eslint'
+            }),
+            commonjs()
+        ]
+    }
 ]
 
 export default config
