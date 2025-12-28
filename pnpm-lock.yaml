@@ -14,9 +14,6 @@ importers:
       '@stylistic/eslint-plugin':
         specifier: ^5.5.0
         version: 5.5.0(eslint@9.39.1)
-      '@types/node':
-        specifier: ^20.19.25
-        version: 20.19.25
       eslint-plugin-unicorn:
         specifier: ^62.0.0
         version: 62.0.0(eslint@9.39.1)
@@ -39,6 +36,9 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^12.3.0
         version: 12.3.0(rollup@4.53.2)(tslib@2.8.1)(typescript@5.9.2)
+      '@types/node':
+        specifier: ^20.19.25
+        version: 20.19.25
       esbuild:
         specifier: ^0.27.0
         version: 0.27.0
