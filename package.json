@@ -1,7 +1,7 @@
 {
   "name": "@vsc-neuropilot/tooling-configurations",
   "version": "1.0.0",
-  "description": "",
+  "description": "VSC-NeuroPilot's npm tooling configurations",
   "readme": "./README.md",
   "files": [
     "dist",
@@ -9,7 +9,13 @@
     "ts"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepack": "pnpm build"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [],
   "author": "",
