@@ -1,6 +1,6 @@
 {
   "name": "@vsc-neuropilot/tooling-configurations",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "VSC-NeuroPilot's npm tooling configurations",
   "readme": "./README.md",
   "files": [
