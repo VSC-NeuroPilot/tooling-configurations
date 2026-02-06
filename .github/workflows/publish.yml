@@ -19,6 +19,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.26.x
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -27,11 +32,6 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: './pnpm-lock.yaml'
           registry-url: "https://registry.npmjs.org"
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.26.x
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile && npm install -g npm@latest
