@@ -55,6 +55,7 @@ export const esbuildTypeScriptPlugin: Plugin = {
 
         // start the watch immediately during setup
         try {
+            // oxlint-disable-next-line typescript/unbound-method
             const configPath = ts.findConfigFile(process.cwd(), ts.sys.fileExists, 'tsconfig.json');
             if (!configPath) {
                 console.error('Could not find tsconfig.json');

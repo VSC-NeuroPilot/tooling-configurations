@@ -7,7 +7,7 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
+    "module": "preserve",
     "target": "es2020",
     "types": ["node"],
     // For nodejs:
@@ -15,7 +15,7 @@
     // "types": ["node"],
     // and npm install -D @types/node
 
-    "moduleResolution": "nodenext",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
 
     // Other Outputs
@@ -40,6 +40,7 @@
     "strict": true,
     "jsx": "react-jsx",
     "isolatedModules": true,
+    "isolatedDeclarations": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,

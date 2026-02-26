@@ -19,7 +19,7 @@ const minimumPolyfillPull: PolyfillNodeOptions = {
     globals: false,
 }
 
-export async function desktop(prodFlag: boolean, watchFlag: boolean) {
+export async function desktop(prodFlag: boolean, watchFlag: boolean): Promise<void> {
     const ctx = await context({
         entryPoints: ['src/desktop/extension.ts'],
         bundle: true,
@@ -45,7 +45,7 @@ export async function desktop(prodFlag: boolean, watchFlag: boolean) {
     }
 }
 
-export async function desktopTest(_prodFlag: boolean, watchFlag: boolean) {
+export async function desktopTest(_prodFlag: boolean, watchFlag: boolean): Promise<void> {
     const ctx = await context({
         entryPoints: ['src/test/suite/desktop/index.ts'],
         bundle: true,
@@ -79,7 +79,7 @@ export async function desktopTest(_prodFlag: boolean, watchFlag: boolean) {
     }
 }
 
-export async function web(prodFlag: boolean, watchFlag: boolean) {
+export async function web(prodFlag: boolean, watchFlag: boolean): Promise<void> {
     const ctx = await context({
         entryPoints: ['src/web/extension.ts'],
         bundle: true,
@@ -106,7 +106,7 @@ export async function web(prodFlag: boolean, watchFlag: boolean) {
     }
 }
 
-export async function webTest(_prodFlag: boolean, watchFlag: boolean) {
+export async function webTest(_prodFlag: boolean, watchFlag: boolean): Promise<void> {
     const ctx = await context({
         entryPoints: ['src/test/suite/web/index.ts'],
         bundle: true,
@@ -142,7 +142,7 @@ export async function webTest(_prodFlag: boolean, watchFlag: boolean) {
     }
 }
 
-export async function webview(prodFlag: boolean, watchFlag: boolean) {
+export async function webview(prodFlag: boolean, watchFlag: boolean): Promise<void> {
     const ctx = await context({
         entryPoints: ['webview/**/*.ts'],
         bundle: true,

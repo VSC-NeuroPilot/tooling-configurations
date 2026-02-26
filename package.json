@@ -8,7 +8,9 @@
     "ts"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "prepare": "tsgo --noEmit",
     "prepack": "pnpm build"
   },
   "repository": {
@@ -19,14 +21,15 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.2",
     "@changesets/cli": "^2.29.7",
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-typescript": "^12.3.0",
     "@types/node": "^20.19.25",
+    "@typescript/native-preview": "7.0.0-dev.20260225.1",
     "esbuild": "^0.27.0",
     "eslint": "^9.39.1",
-    "rollup": "^4.53.2",
-    "tslib": "^2.8.1",
+    "oxlint": "^1.50.0",
+    "oxlint-tsgolint": "^0.15.0",
+    "tsdown": "^0.20.3",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
@@ -41,5 +44,23 @@
     "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^16.5.0",
     "typescript-eslint": "^8.47.0"
+  },
+  "main": "./dist/esbuild/index.cjs",
+  "module": "./dist/esbuild/index.mjs",
+  "types": "./dist/esbuild/index.d.cts",
+  "exports": {
+    "./eslint": {
+      "import": "./dist/eslint/index.mjs",
+      "require": "./dist/eslint/index.cjs"
+    },
+    "./esbuild": {
+      "import": "./dist/esbuild/index.mjs",
+      "require": "./dist/esbuild/index.cjs"
+    },
+    "./esbuild-plugins": {
+      "import": "./dist/esbuild/plugins.mjs",
+      "require": "./dist/esbuild/plugins.cjs"
+    },
+    "./package.json": "./package.json"
   }
 }

@@ -1,12 +1,12 @@
 // @ts-check
 import js from '@eslint/js';
 import { globalIgnores } from 'eslint/config';
-import tseslint from 'typescript-eslint';
+import tseslint, { FlatConfig } from 'typescript-eslint';
 import stylistic from '@stylistic/eslint-plugin';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 
-export function eslintConfig() {
+export function eslintConfig(): FlatConfig.ConfigArray {
     return tseslint.config(
         {
             files: ['**/*.{js,mjs,cjs,ts,mts,cts,tsx}'],
